@@ -28,6 +28,14 @@ Unter den Fischen war auch ein Krokodil. Bei dem sollte der LED-Strip blinken un
 * Siemens NX (3D-Zeichnungen)
 
 ## Aufbau
+Das Schaltbild für die Fischklappe:
+![Fischklappe Schaltplan](https://github.com/user-attachments/assets/f88d5c95-cfa9-4f02-bcf7-0b865ea993cb)
+
+
+
+
+
+
 
 
 /**
