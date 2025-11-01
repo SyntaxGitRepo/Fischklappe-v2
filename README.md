@@ -12,20 +12,21 @@ Unter den Fischen war auch ein Krokodil. Bei dem sollte der LED-Strip blinken un
 ## Material 
  * Glasrohr (1.5m x Ø 11cm)
  * 3D-Drucker für die Klappe
- * UNO R3 + ATmeg328p + ESP8266 WIFI (4Mb) USB - TTL
+ * ATmeg328p + ESP8266 WIFI (4Mb)
  * Wl-134 RFID-Chip
  * Sg90 180° Servo
  * (Adafruit NeoPixel WS2812 LED-Strip)
  * Adafruit NeoPixel WS2812 LED-Ring
  * Jumpers
- * 2 kleine Steckbretter für leichtere Verkabelung
- * 9V-Batterie
- * Großer Kabelkanal als Halterung
+ * Protoboard für Verkabelung und Stromversorgung
 
 ## Software
-* Arduino IDE (ESP8266)
-* VSCode (ESP8266)
+* Arduino IDE 
+* VSCode
+* CLion
+* PyCharm
 * Siemens NX (3D-Zeichnungen)
+* Bamboolab Studio
 
 ## Aufbau
 Das Schaltbild für die Fischklappe:
