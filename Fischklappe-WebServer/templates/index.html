@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abenteuer der Fische und des Krokodils</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: "Roboto", sans;
+            background-color: #272727;
+            margin: 0;
+            padding: 0;
+            color: #fed766;
+        }
+        header {
+            background-color: #009fb7;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        main {
+            padding: 20px;
+            text-align: left;
+        }
+        footer {
+            background-color: #009fb7;
+            color: #ffffff;
+            text-align: left;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .description {
+            margin: 20px auto;
+            max-width: 600px;
+            line-height: 1.6;
+            color: #ffffff;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Willkommen zu den Abenteuern der Fische und des Krokodils</h1>
+    </header>
+    <main>
+        <div class="description">
+            <p>Tritt ein in die aufregende Welt von Coni, Roter Fettklotz, Ghost of Uchiha und Sir Schluckifax! Erlebe, wie ein listiges Krokodil und drei einzigartige Fische lernen, dass Freundschaft stärker sein kann als jede Rivalität. Entdecke die Geschichten, die voller Abenteuer, Humor und Herz sind.</p>
+        </div>
+        <ul id="data-list"></ul>
+    </main>
+    <footer>
+        &copy; 2025 Abenteuer der Fische und des Krokodils
+    </footer>
+    <script>
+        const socket = new WebSocket("ws://" + window.location.host + "/ws/esp/");
+
+        socket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            if (data.action === "redirect" && data.target) {
+                console.log("Redirecting to", data.target);
+                window.location.href = data.target;
+            }
+        };
+        
+        socket.onopen = () => console.log("WebSocket connected");
+        socket.onclose = () => console.log("WebSocket closed");
+</script>
+</body>
+</html>

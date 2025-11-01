@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roter Fettklotz</title>
+    <style>
+        body {
+            font-family: "Roboto", serif;
+            margin: 0;
+            padding: 0;
+            background-color: #272727; /* Dark gray for the body */
+            color: #fff; /* Light text color */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .roter-body {
+            background-color: #272727; /* Dark gray for the body */
+        }
+
+        .roter-header {
+            background-color: #fed766; /* Yellow for header */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 -2px 5px rgba(255, 255, 255, 0.2); /* Soft shading */
+        }
+
+        .roter-footer {
+            background-color: #fed766; /* Yellow for footer */
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(255, 255, 255, 0.2); /* Soft shading */
+        }
+    </style>    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body class="roter-body">
+    <header class="roter-header">
+        <h1>Roter Fettklotz</h1>
+    </header>
+    <main>
+        <h2>Roter Fettklotz und die wilde Strömung</h2>
+        <p>Roter Fettklotz, der kräftige rote Fisch, war ein wenig langsam, aber er hatte ein großes Herz und eine starke Willenskraft.</p>
+        <p>Eines Tages, als er durch den Fluss schwamm, wurden er und seine Freunde von einer plötzlichen Strömung mitgerissen. „Haltet durch!“, rief Roter Fettklotz, während er verzweifelt mit seinen Flossen ruderte. Doch die Strömung war zu stark, und er geriet in Schwierigkeiten.</p>
+        <p>Sir Schluckifax, der ebenfalls mitgerissen wurde, bemerkte die Gefahr. „Haltet euch an mir fest!“, rief er und paddelte mit all seiner Kraft. Dank Schluckifax' Hilfe entkam Roter Fettklotz der Strömung.</p>
+        <p>„Du bist vielleicht groß und gruselig, aber du hast ein gutes Herz!“, sagte Fettklotz später, während sie gemeinsam in sichereren Gewässern schwammen.</p>
+    </main>
+    <footer class="roter-footer">
+        &copy; 2025 Abenteuer der Fische und des Krokodils
+    </footer>
+    <script>
+        const socket = new WebSocket("ws://" + window.location.host + "/ws/esp/");
+
+        socket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            if (data.action === "redirect" && data.target) {
+                console.log("Redirecting to", data.target);
+                window.location.href = data.target;
+            }
+        };
+        
+        socket.onopen = () => console.log("WebSocket connected");
+        socket.onclose = () => console.log("WebSocket closed");
+</script></body>
+</html>

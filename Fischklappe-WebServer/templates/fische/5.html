@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sir Schluckifax</title>
+    <style>
+        body {
+            font-family: "Roboto", serif;
+            margin: 0;
+            padding: 0;
+            background-color: #272727; /* Dark gray for the body */
+            color: #fff; /* Light text color */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .schluckifax-body {
+            background-color: #272727; /* Dark gray for the body */
+        }
+
+        .schluckifax-header {
+            background-color: #272727; /* Dark gray for header */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), 0 -2px 5px rgba(255, 255, 255, 0.1); /* Darker shading */
+        }
+
+        .schluckifax-footer {
+            background-color: #272727; /* Dark gray for footer */
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3), 0 2px 5px rgba(255, 255, 255, 0.1); /* Darker shading */
+        }
+    </style>    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body class="schluckifax-body">
+    <header class="schluckifax-header">
+        <h1>Sir Schluckifax</h1>
+    </header>
+    <main>
+        <h2>Sir Schluckifax' unerwartete Erkenntnis</h2>
+        <p>Sir Schluckifax war immer hungrig, und sein Ziel war es, die drei Fische zu fangen. Doch trotz seiner Stärke und List entwischten sie ihm immer wieder. Mit jedem Versuch lernte er mehr über die Fische – ihre Schnelligkeit, Cleverness und Stärke.</p>
+        <p>Als eine wilde Strömung alle in Gefahr brachte, handelte Schluckifax instinktiv. Statt die Fische zu jagen, paddelte er tapfer, um sie zu retten. Nachdem die Gefahr vorbei war, fragte Coni: „Warum hast du uns geholfen? Du wolltest uns doch fangen!“</p>
+        <p>Schluckifax seufzte. „Manchmal ist es wichtiger, Freunde zu haben, als satt zu sein.“ Die drei Fische lächelten, und so begann eine ungewöhnliche Freundschaft zwischen dem Krokodil und seinen einstigen Zielen.</p>
+    </main>
+    <footer class="schluckifax-footer">
+        &copy; 2025 Abenteuer der Fische und des Krokodils
+    </footer>
+    <script>
+        const socket = new WebSocket("ws://" + window.location.host + "/ws/esp/");
+
+        socket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            if (data.action === "redirect" && data.target) {
+                console.log("Redirecting to", data.target);
+                window.location.href = data.target;
+            }
+        };
+        
+        socket.onopen = () => console.log("WebSocket connected");
+        socket.onclose = () => console.log("WebSocket closed");
+</script></body>
+</html>

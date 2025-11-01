@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conis Abenteuer</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: "Roboto", serif;
+            margin: 0;
+            padding: 0;
+            background-color: #272727; /* Dark gray for the body */
+            color: #fff; /* Light text color */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .coni-body {
+            background-color: #272727; /* Dark gray for the body */
+        }
+
+        .coni-header {
+            background-color: #ba2c73; /* Pink for header */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 -2px 5px rgba(255, 255, 255, 0.2); /* Soft shading */
+        }
+
+        .coni-footer {
+            background-color: #ba2c73; /* Pink for footer */
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(255, 255, 255, 0.2); /* Soft shading */
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body class="coni-body">
+    <header class="coni-header">
+        <h1>Conis Abenteuer</h1>
+    </header>
+    <main>
+        <h2>Conis großer Spaß</h2>
+        <p>Coni, der pinke Fisch, war bekannt für seine Schnelligkeit und seinen schelmischen Humor. Er liebte es, Streiche zu spielen, und kein Tag verging, an dem er nicht für Chaos sorgte.</p>
+        <p>Eines Tages plante Sir Schluckifax II., das hungrige Krokodil, ihn zu fangen. Schluckifax baute eine Falle mit einer schimmernden rosa Muschel, Conis Lieblingsfarbe. Doch Coni bemerkte die Schnur, die zur Schwanzflosse des Krokodils führte. Mit einem breiten Grinsen wickelte er die Schnur um Schluckifax’ Beine und zog kräftig. Platsch! Das Krokodil landete im Wasser.</p>
+        <p>"Du bist zu langsam für mich!", rief Coni lachend und verschwand in den Tiefen. Schluckifax knurrte wütend, doch insgeheim bewunderte er Conis Cleverness.</p>
+    </main>
+    <footer class="coni-footer">
+        &copy; 2025 Abenteuer der Fische und des Krokodils
+    </footer>
+    <script>
+        const socket = new WebSocket("ws://" + window.location.host + "/ws/esp/");
+
+        socket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            if (data.action === "redirect" && data.target) {
+                console.log("Redirecting to", data.target);
+                window.location.href = data.target;
+            }
+        };
+        
+        socket.onopen = () => console.log("WebSocket connected");
+        socket.onclose = () => console.log("WebSocket closed");
+</script>
+</body>
+</html>

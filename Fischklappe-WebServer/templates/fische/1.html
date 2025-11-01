@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghost of Uchiha</title>
+    <style>
+        body {
+            font-family: "Roboto", serif;
+            margin: 0;
+            padding: 0;
+            background-color: #272727; /* Dark gray for the body */
+            color: #fff; /* Light text color */
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .uchiha-body {
+            background-color: #272727; /* Dark gray for the body */
+        }
+
+        .uchiha-header {
+            background-color: #009fb7; /* Turquoise for header */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2), 0 -2px 5px rgba(255, 255, 255, 0.2); /* Soft shading */
+        }
+
+        .uchiha-footer {
+            background-color: #009fb7; /* Turquoise for footer */
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2), 0 2px 5px rgba(255, 255, 255, 0.2); /* Soft shading */
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body class="uchiha-body">
+    <header class="uchiha-header">
+        <h1>Ghost of Uchiha</h1>
+    </header>
+    <main>
+        <h2>Ghost of Uchiha und die Schatten des Wassers</h2>
+        <p>Ghost of Uchiha, der geheimnisvolle lila Fisch, war ein Meister des Verschwindens. Er liebte die Schatten und wusste genau, wie er unsichtbar werden konnte.</p>
+        <p>Doch eines Tages wurde er selbst überrascht. Das Krokodil schnappte nach ihm, doch Ghost entkam mit Leichtigkeit, indem er in die dunklen Tiefen abtauchte. Später, in einer Strömung, wurde Ghost schwer verletzt, als Schmutz und Rauch seine Augen trafen.</p>
+        <p>Schluckifax bemerkte dies und zögerte nicht, ihm zu helfen. „Warum hast du mich gerettet?“, fragte Ghost verwirrt. „Weil Freunde einander helfen“, antwortete Schluckifax schlicht.</p>
+        <p>Von diesem Tag an begann Ghost, in dem Krokodil mehr als nur einen Feind zu sehen.</p>
+    </main>
+    <footer class="uchiha-footer">
+        &copy; 2025 Abenteuer der Fische und des Krokodils
+    </footer>
+    <script>
+        const socket = new WebSocket("ws://" + window.location.host + "/ws/esp/");
+
+        socket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            if (data.action === "redirect" && data.target) {
+                console.log("Redirecting to", data.target);
+                window.location.href = data.target;
+            }
+        };
+        
+        socket.onopen = () => console.log("WebSocket connected");
+        socket.onclose = () => console.log("WebSocket closed");
+</script></body>
+</html>
