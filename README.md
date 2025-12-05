@@ -53,7 +53,11 @@ Diese sollten im Betrieb in der 4. Einstellung (USB <-> ESP8266) stehen, da dann
 Der ESP kann mit dem Arduino IDE programmiert werden. Damit dies möglich ist muss das Board hinzugefügt werden. Unter File->Preferences->Additional boards manager URLs muss folgende URL hinzugefügt werden: "http://arduino.esp8266.com/stable/package_esp8266com_index.json". Dann auf OK drücken und unter dem Board Manager "esp8266" suchen. Wenn dieses Installiert ist kann unter Tools->Board:->esp8266->Generic ESP8266 Module
 das Board ausgewählt werden. Wenn Code über OTA (Over The Air) uploaded werden soll, kann dies über Tools->Port->Network Ports gemacht werden. Manchmal muss der Reset Btn vor dem Upload gedrückt werden. Das standard OTA Passwort ist "admin" (Ja sehr sicher). 
 
+## Fisch Geschichten
+Es wurde zu jedem Fisch eine Geschichte geschrieben. Diese wurden dann Zusammengefasst und für jeden eine einfache Website designed. Der Microcontroller ist mit einem Netzwerk verbunden. Jeder der die Geschichten lesen will verbindet sich mit dem Netzwerk. Das Django Framework diente als Webserver der die Kommunikation zwischen der Fischklappe und den Geräten. Wenn ein Fisch an den Wl-134 gehalten wird, sendet der ESP eine API request and den webserver. Dieser sendet die ID von dem Fisch weiter an alle verbundenen Geräte. 
 
+## 3D-Modelle
+Alle 3D-Modelle wurden auf dem BambuLab P1S mit PLA 20-30% infill gedruckt.
 
 ## Quellen
 https://forum.arduino.cc/t/atmega328p-esp8266-wifi-tutorial/944380
