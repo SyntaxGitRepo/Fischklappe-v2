@@ -1,2 +1,2 @@
-#define SECRET_SSID "HTL Reutte"
-#define SECRET_PASS "HTLReutte"
+#define SECRET_SSID ""
+#define SECRET_PASS ""
