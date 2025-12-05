@@ -37,7 +37,7 @@ Die Fischklappe wurde zuerst auf einem Steckbrett aufgebaut und dann getestet. D
 Als Stromversorgung kam ein 9V Barrel Jack Adapter zum Einsatz, da für den WL-134 9V benötigt werden. Es ist außerdem ein weiterer (noch) unbenutzter Stecker auf das Protoboard gelötet. Als Verbindung 
 zwischen den Komponenten dienten Jumper Kabel in verschidenen längen.
 
-## Micocontroller
+## Microcontroller
 Als Microcontroller wurde ein ESP8266 verwendet, da dieser genügend Leistung für die Anwendung hat und Wifi Kompatibel ist um diesen sowohl für die "Fisch Geschichten" als auch zum Programmieren 
 von ihm genutzt wird. Das Board auf dem der Microcontroller sitzt besteht aus 2 Microcontrollern: Einem ESP8266 und einem Atmega328p (Arduino). Es sind Dipschalter auf dem Board aufgebracht um 
 zu zu selektieren welcher Kommukationsweg offen ist: 
