@@ -27,25 +27,33 @@ Unter den Fischen war auch ein Krokodil. Bei dem sollte der LED-Strip blinken un
 * PyCharm
 * Siemens NX (3D-Zeichnungen)
 * Bamboolab Studio
+* Altium Designer
 
 ## Aufbau
 Das Schaltbild für die Fischklappe:
 ![Fischklappe Schaltplan](FischklappeSchaltbild.png)
 
+Die Fischklappe wurde zuerst auf einem Steckbrett aufgebaut und dann getestet. Dann wurde ein Protoboard entworfen und gelötet. An diesem Protoboard sind alle einzelnen Komponenten angeschlossen.
+Als Stromversorgung kam ein 9V Barrel Jack Adapter zum Einsatz, da für den WL-134 9V benötigt werden. Es ist außerdem ein weiterer (noch) unbenutzter Stecker auf das Protoboard gelötet. Als Verbindung 
+zwischen den Komponenten dienten Jumper Kabel in verschidenen längen.
+
+## Micocontroller
+Als Microcontroller wurde ein ESP8266 verwendet, da dieser genügend Leistung für die Anwendung hat und Wifi Kompatibel ist um diesen sowohl für die "Fisch Geschichten" als auch zum Programmieren 
+von ihm genutzt wird. Das Board auf dem der Microcontroller sitzt besteht aus 2 Microcontrollern: Einem ESP8266 und einem Atmega328p (Arduino). Es sind Dipschalter auf dem Board aufgebracht um 
+zu zu selektieren welcher Kommukationsweg offen ist: 
+
+ATmega <-> ESP8266 1100000
+USB <-> ATmega 0011000
+USB <-> ESP8266 0000111 (Update firmware)
+USB <-> ESP8266 0000110
+All independent 0000000
+
+Diese sollten im Betrieb in der 4. Einstellung (USB <-> ESP8266) stehen, da dann auf den Seriellen Monitor zugegriffen werden kann. Wenn der ESP programiert werden soll, dann müssen diese in die 3. Einstellung 
+(USB <-> ESP8266 (Update firmware)) gestellt werden. Wenn der Upload fertig ist müssen die Dipschalter wieder in die 4. Einstellung gestellt werden. Sonst würde die Firmware beim nächsten Reset gelöscht werden.
+Der ESP kann mit dem Arduino IDE programmiert werden. Damit dies möglich ist muss das Board hinzugefügt werden. Unter File->Preferences->Additional boards manager URLs muss folgende URL hinzugefügt werden: "http://arduino.esp8266.com/stable/package_esp8266com_index.json". Dann auf OK drücken und unter dem Board Manager "esp8266" suchen. Wenn dieses Installiert ist kann unter Tools->Board:->esp8266->Generic ESP8266 Module
+das Board ausgewählt werden. Wenn Code über OTA (Over The Air) uploaded werden soll, kann dies über Tools->Port->Network Ports gemacht werden. Manchmal muss der Reset Btn vor dem Upload gedrückt werden. Das standard OTA Passwort ist "admin" (Ja sehr sicher). 
 
 
 
-
-
-
-
-/**
- *To connect to Arduino via Serial (USB) go to File->Preferences and paste "http://arduino.esp8266.com/stable/package_esp8266com_index.json"
- *into the additional boards manager URL and press OK. Then you should be able to go to the board manager (on the left of the screen) and search "esp8266".
- *install the board and select it by going to Tools->Board:->esp8266->Generic ESP8266 Module.
- *To upload code via OTA (Over The Air) to the ESP go to Tools->Port->Network Ports and select the ESP.
- *Before you upload code you need to reset the ESP (red hardware button) and then click the upload button. The long red Text and the beginning is not an error.
- *It will ask you for a password which is "admin". After uploading there will be an error message that you can ignore.
- *If you want to connect to the ESP via Wi-Fi to see the output from the WL-134 (RFID-Chip) you can do that with PuTTY. enter the ip and select connection type other: Telnet.
- *To connect to the RFID-Chip: connect 5V to the Power and GND to the ESP-Pins. Connect the TxD-Pin from the RFID-Chip to GPIO-12 of the ESP.
-**/
+## Quellen
+https://forum.arduino.cc/t/atmega328p-esp8266-wifi-tutorial/944380
