@@ -42,11 +42,11 @@ Als Microcontroller wurde ein ESP8266 verwendet, da dieser genügend Leistung f�
 von ihm genutzt wird. Das Board auf dem der Microcontroller sitzt besteht aus 2 Microcontrollern: Einem ESP8266 und einem Atmega328p (Arduino). Es sind Dipschalter auf dem Board aufgebracht um 
 zu zu selektieren welcher Kommukationsweg offen ist: 
 
-ATmega <-> ESP8266 1100000
-USB <-> ATmega 0011000
-USB <-> ESP8266 0000111 (Update firmware)
-USB <-> ESP8266 0000110
-All independent 0000000
+* ATmega <-> ESP8266 1100000
+* USB <-> ATmega 0011000
+* USB <-> ESP8266 0000111 (Update firmware)
+* USB <-> ESP8266 0000110
+* All independent 0000000
 
 Diese sollten im Betrieb in der 4. Einstellung (USB <-> ESP8266) stehen, da dann auf den Seriellen Monitor zugegriffen werden kann. Wenn der ESP programiert werden soll, dann müssen diese in die 3. Einstellung 
 (USB <-> ESP8266 (Update firmware)) gestellt werden. Wenn der Upload fertig ist müssen die Dipschalter wieder in die 4. Einstellung gestellt werden. Sonst würde die Firmware beim nächsten Reset gelöscht werden.
